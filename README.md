@@ -34,8 +34,11 @@ java, spring, JPA? 모든 게 처음인 개발자의 **셀프 부트캠프**에 
 ### 🌱 개발환경
 
 ✔language : JAVA 1.8
+
 ✔framework : Spring Boot
+
 ✔DB : MariaDB
+
 ✔etc : jpa
 
 ### 🎁 적용 API 리스트
