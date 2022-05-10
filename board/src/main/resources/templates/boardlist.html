@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymelwaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>겟시판 리스트</title>
+    <title>게시판 리스트</title>
 </head>
 <style>
         .layout {
@@ -22,8 +22,8 @@
             </thead>
             <tbody>
             <tr th:each="board : ${list}">
-                <td th:text="${board.id}">1</tdth>
-                <td th:text="${board.content}">제목입니다</td>
+                <td th:text="${board.id}">1</td>
+                <td th:text="${board.title}">제목입니다</td>
             </tr>
             </tbody>
         </table>

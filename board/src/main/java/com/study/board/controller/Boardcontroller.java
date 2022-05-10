@@ -17,11 +17,11 @@ import java.util.StringTokenizer;
 
 @Controller
 
-public class Boardcontroller {
+public class Boardcontroller {//컨트롤러 클래스 생성
     @Autowired
-    private BoardService boardService;
+    private BoardService boardService;//보드서비스의 인스턴스 선언?
     @GetMapping("/board/write")
-    public String boardWriteform() {
+    public String boardWriteform() {//보드라이트 url로 가면 해당 html 보여주기
 
         return "boardwrite";
 
@@ -29,17 +29,25 @@ public class Boardcontroller {
 
     @PostMapping("/board/writepro")
 
-    public String boardwritepro(Board board){
+    public String boardwritepro(Board board){//보드 클래스의 데이터를 가져와라?
 
-        boardService.write(board);
+        boardService.write(board);//(객체)보드서비스의 write 메서드 실행해
         return "";
     }
 
     @GetMapping("/board/list")
-    public String boardList(Model model){
+    public String boardList(Model model){//보드리스트 url로 가면 Model을 통해서 보드서비스의 보드리스트를 받아올 건데 그 이름을 "리스트"
         model.addAttribute("list",boardService.boardList());
-        return"boardlist";
-    }//name 있는 거로 선택하는지 몰랐고, 아직 뭐가 객체고 뭐가 메소든지 좀 헷갈린다...  글고 객체 뒤에 () 안붙여서 틀렸다
+        return"boardlist";//html 보드리스트 보여줘
+    }//아직 뭐가 객체고 뭐가 메소든지 좀 헷갈린다...(220507)
+
+    @GetMapping("/board/view")//보드뷰 url 들어가면 html보여줘 localhost:8080/board/view?id=1
+    public String boardView(Model model, Integer id){
+        model.addAttribute("board",boardService.boardView(id));
+        return "boardview";//보드뷰는 모델을 통해서 id를 보드라는 이름으로 담아오기
+    }
+
+
 }
 
 

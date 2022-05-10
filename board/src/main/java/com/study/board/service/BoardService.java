@@ -8,15 +8,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BoardService {
+public class BoardService {//보드서비스 클래스 생성
     @Autowired
-    private BoardRepository boardRepository;
+    private BoardRepository boardRepository; //인터페이스 보드리파지터리 사용할 거야
 
     public void write(Board board) {
         boardRepository.save(board);
     }
     public List<Board> boardList(){
         return boardRepository.findAll();
+    }
+    public Board boardView(int id){
+        return boardRepository.findById(id).get();
     }
 
 }
