@@ -38,7 +38,7 @@ public class Boardcontroller {//컨트롤러 클래스 생성
     @GetMapping("/board/list")
     public String boardList(Model model){//보드리스트 url로 가면 Model을 통해서 보드서비스의 보드리스트를 받아올 건데 그 이름을 "리스트"
         model.addAttribute("list",boardService.boardList());
-        return"boardlist";//html 보드리스트 보여줘
+        return "boardlist";//html 보드리스트 보여줘
     }//아직 뭐가 객체고 뭐가 메소든지 좀 헷갈린다...(220507)
 
     @GetMapping("/board/view")//보드뷰 url 들어가면 html보여줘 localhost:8080/board/view?id=1
@@ -46,7 +46,11 @@ public class Boardcontroller {//컨트롤러 클래스 생성
         model.addAttribute("board",boardService.boardView(id));
         return "boardview";//보드뷰는 모델을 통해서 id를 보드라는 이름으로 담아오기
     }
-
+    @GetMapping("/board/delete")
+    public String boardDelete(Model model, Integer id){
+        boardService.boardDelete(id);
+        return "redirect:/board/list";
+    }
 
 }
 

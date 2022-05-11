@@ -5,16 +5,15 @@
     <title>게시글 상세페이지</title>
 </head>
 <body>
-<tr th:each="board : ${list}">
+
 <h1>
-    <td th:text="${board.id}">제목</td>
+    <td th:text="${board.title}">제목</td>
 </h1>
 <p>
-    <td th:text="${board.content}">내용입니다</td>//여기 수정 중... 220510
+    <td th:text="${board.content}">내용입니다</td>
 </p>
-
-
-
+<a th:href="@{/board/delete(id=${board.id})}">글 삭제</a>
 
 </body>
+
 </html>

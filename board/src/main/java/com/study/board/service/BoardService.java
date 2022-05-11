@@ -22,4 +22,8 @@ public class BoardService {//보드서비스 클래스 생성
         return boardRepository.findById(id).get();
     }
 
+    public void boardDelete(Integer id){
+        boardRepository.deleteById(id);
+    }
+
 }
