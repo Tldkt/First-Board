@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -51,6 +52,21 @@ public class Boardcontroller {//컨트롤러 클래스 생성
         boardService.boardDelete(id);
         return "redirect:/board/list";
     }
+    @GetMapping("/board/modify/{id}")//해당 id를 받아와서 넘어가라
+    public String boardModify(@PathVariable("id") Integer id){
+        //pathvariable은 url 역슬래시 뒤에 들어간 id를 받아와서 integer id에 넢어준다는 의미
+        return "boardmodify";
+        //boardmodify 페이지 보여줘
+    }
+
+    @PostMapping("/board/update/{id}")
+    public String boardUpdate(@PathVariable("id") Integer id, Board board){
+        Board boardTemp = boardService.boardView(id);
+        boardTemp.setTitle(board.getTitle());
+        boardTemp.setTitle(board.setContent());
+        return "redirect:/board/list";
+    }
+
 
 }
 

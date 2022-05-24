@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymelwaf.org">>
+<html lang="en" xmlns:th="http://www.thymelwaf.org">
 <head>
     <meta charset="UTF-8">
     <title>게시글 상세페이지</title>
@@ -13,6 +13,8 @@
     <td th:text="${board.content}">내용입니다</td>
 </p>
 <a th:href="@{/board/delete(id=${board.id})}">글 삭제</a>
+
+<a th:href="@{/board/modify/{id}(id = ${board.id})}">수정</a>
 
 </body>
 
