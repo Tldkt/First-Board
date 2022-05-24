@@ -33,7 +33,7 @@ public class Boardcontroller {//컨트롤러 클래스 생성
     public String boardwritepro(Board board){//보드 클래스의 데이터를 가져와라?
 
         boardService.write(board);//(객체)보드서비스의 write 메서드 실행해
-        return "";
+        return "redirect:/board/list";
     }
 
     @GetMapping("/board/list")
@@ -53,8 +53,9 @@ public class Boardcontroller {//컨트롤러 클래스 생성
         return "redirect:/board/list";
     }
     @GetMapping("/board/modify/{id}")//해당 id를 받아와서 넘어가라
-    public String boardModify(@PathVariable("id") Integer id){
+    public String boardModify(@PathVariable("id") Integer id,Model model){
         //pathvariable은 url 역슬래시 뒤에 들어간 id를 받아와서 integer id에 넢어준다는 의미
+        model.addAttribute("board", boardService.boardView(id))
         return "boardmodify";
         //boardmodify 페이지 보여줘
     }
@@ -63,7 +64,7 @@ public class Boardcontroller {//컨트롤러 클래스 생성
     public String boardUpdate(@PathVariable("id") Integer id, Board board){
         Board boardTemp = boardService.boardView(id);
         boardTemp.setTitle(board.getTitle());
-        boardTemp.setTitle(board.setContent());
+        boardTemp.setTitle(board.getContent());
         return "redirect:/board/list";
     }
 
