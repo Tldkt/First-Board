@@ -55,7 +55,7 @@ public class Boardcontroller {//컨트롤러 클래스 생성
     @GetMapping("/board/modify/{id}")//해당 id를 받아와서 넘어가라
     public String boardModify(@PathVariable("id") Integer id,Model model){
         //pathvariable은 url 역슬래시 뒤에 들어간 id를 받아와서 integer id에 넢어준다는 의미
-        model.addAttribute("board", boardService.boardView(id))
+        model.addAttribute("board", boardService.boardView(id));
         return "boardmodify";
         //boardmodify 페이지 보여줘
     }
@@ -64,7 +64,8 @@ public class Boardcontroller {//컨트롤러 클래스 생성
     public String boardUpdate(@PathVariable("id") Integer id, Board board){
         Board boardTemp = boardService.boardView(id);
         boardTemp.setTitle(board.getTitle());
-        boardTemp.setTitle(board.getContent());
+        boardTemp.setContent(board.getContent());
+        boardService.write(boardTemp);
         return "redirect:/board/list";
     }
 
