@@ -5,10 +5,7 @@ import com.study.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -16,10 +13,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-@Controller
+@RestController//22.7.13 추가
+//@Controller
 
 public class Boardcontroller {//컨트롤러 클래스 생성
-    @Autowired
+    @GetMapping("/hello")
+    public String hello(){
+        return "hello";
+    }
+
+    /*@Autowired
     private BoardService boardService;//보드서비스의 인스턴스 선언?
     @GetMapping("/board/write")
     public String boardWriteform() {//보드라이트 url로 가면 해당 html 보여주기
@@ -67,8 +70,7 @@ public class Boardcontroller {//컨트롤러 클래스 생성
         boardTemp.setContent(board.getContent());
         boardService.write(boardTemp);
         return "redirect:/board/list";
-    }
-
+    }*/
 
 }
 
