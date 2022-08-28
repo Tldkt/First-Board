@@ -22,7 +22,7 @@ public class Boardcontroller {//컨트롤러 클래스 생성
         return "hello";
     }
 
-    /*@Autowired
+    @Autowired
     private BoardService boardService;//보드서비스의 인스턴스 선언?
     @GetMapping("/board/write")
     public String boardWriteform() {//보드라이트 url로 가면 해당 html 보여주기
@@ -70,7 +70,7 @@ public class Boardcontroller {//컨트롤러 클래스 생성
         boardTemp.setContent(board.getContent());
         boardService.write(boardTemp);
         return "redirect:/board/list";
-    }*/
+    }
 
 }
 
